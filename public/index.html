@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- Conteúdo do arquivo .env = NTBA_FIX_319=1 node index.js -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Telegram</title>
+
+    <!-- Import bootstrap for better styles -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+      crossorigin="anonymous"
+    />
+
+    <!-- Our styles import -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="container" id="body">
+    <!-- Header with Text in the middle -->
+    <div class="header">
+      <h2>ChatBot Telegram</h2>
+    </div>
+
+    <!-- Display all messagess -->
+    <div class="row">
+      <div id="messages" class="col-12 all-messages"></div>
+    </div>
+
+    <!-- Input and button send -->
+    <form class="row" id="form">
+      <input
+        id="input"
+        placeholder="Message..."
+        type="text"
+        class="form-control message-input col-7 col-sm-8 col-md-10"
+      />
+      <button
+        type="submit"
+        class="btn btn-primary submit-btn col-5 col-sm-4 col-md-2"
+      >
+        Enviar
+      </button>
+    </form>
+    <script src="bot.js"></script>
+  </body>
+</html>
