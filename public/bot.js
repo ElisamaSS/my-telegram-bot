@@ -1,4 +1,4 @@
-import TelegramBot from "node-telegram-bot-api";
+const TelegramBot = require("node-telegram-bot-api");
 
 // Substitua o valor abaixo pelo token de telegrama que você recebe de @BotFather
 const token = "1297260365:AAGmjpv-tz1TvqvaPTGZi-byRU_xtR6iqaw";
@@ -6,9 +6,14 @@ const token = "1297260365:AAGmjpv-tz1TvqvaPTGZi-byRU_xtR6iqaw";
 // Crie um bot que usa 'polling' para buscar novas atualizações
 const bot = new TelegramBot(token, { polling: true });
 
+bot.on("polling_error", (err) => console.log(err));
+
 //Ouça qualquer tipo de mensagem. Existem diferentes tipos de mensagens.
 bot.on("message", (msg) => {
-  // chat.innerHTML = '<div class="info">You are connected to the chat</div>';
+  //chat.innerHTML = '<div class="info">You are connected to the chat</div>';
+
+  const msgReceived = document.querySelector("#messages");
+  console.log(msgReceived);
   const start = new Date();
   console.log("Data: ", start.toLocaleString());
   //console.log('AQUI', msg);
@@ -17,6 +22,8 @@ bot.on("message", (msg) => {
   const newmsg = msg.text;
   console.log("Usuário: ", newuser);
   console.log("Mensagem Recebida: ", newmsg);
+
+  msgReceived.textContent = newmsg;
 
   // enviar uma mensagem para o chat acusando o recebimento da mensagem
   bot.sendMessage(chatId, "Olá, como posso lhe ajudar?");
