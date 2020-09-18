@@ -3,32 +3,35 @@ import express from "express";
 //const app = require('express')();
 //const http = require('http').createServer(app);
 import http from "http";
-import TelegramBot from "node-telegram-bot-api";
+import path from "path";
+//import TelegramBot from "node-telegram-bot-api";
 
 dotenv.config();
+path.__dirname = path.resolve();
 
 const app = express();
 const httpServer = http.createServer(app);
 
 app.use(express.static("public"));
 
+app.get("/", (req, res) => {
+  res.sendFile(path.__dirname + "/index.html");
+  console.log("Carregando Index....");
+});
+
 httpServer.listen(3000, function () {
   console.log("Conectado 3000");
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-  console.log("Carregando Index....");
-});
 
 // Substitua o valor abaixo pelo token de telegrama que você recebe de @BotFather
-const token = "1297260365:AAGmjpv-tz1TvqvaPTGZi-byRU_xtR6iqaw";
+//const token = "1297260365:AAGmjpv-tz1TvqvaPTGZi-byRU_xtR6iqaw";
 
 // Crie um bot que usa 'polling' para buscar novas atualizações
-const bot = new TelegramBot(token, { polling: true });
+//const bot = new TelegramBot(token, { polling: true });
 
 //Ouça qualquer tipo de mensagem. Existem diferentes tipos de mensagens.
-bot.on("message", (msg) => {
+/*bot.on("message", (msg) => {
   // chat.innerHTML = '<div class="info">You are connected to the chat</div>';
 
   const start = new Date();
@@ -57,4 +60,4 @@ bot.on("edited_message", (msg) => {
     chatId,
     "Atenção! Ao editar a mensagem esta alteração não é replicada ao operador, por favor envie uma nova mensagem!"
   );
-});
+});*/
