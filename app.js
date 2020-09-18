@@ -14,15 +14,14 @@ const httpServer = http.createServer(app);
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.__dirname + "/index.html");
-  console.log("Carregando Index....");
-});
-
 httpServer.listen(3000, function () {
   console.log("Conectado 3000");
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(path.__dirname + "/index.html");
+  console.log("Carregando Index....");
+});
 
 // Substitua o valor abaixo pelo token de telegrama que você recebe de @BotFather
 //const token = "1297260365:AAGmjpv-tz1TvqvaPTGZi-byRU_xtR6iqaw";
