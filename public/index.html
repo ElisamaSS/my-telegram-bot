@@ -15,9 +15,14 @@
       integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
       crossorigin="anonymous"
     />
-
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
     <!-- Our styles import -->
     <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="#" />
   </head>
 
   <body class="container" id="body">
@@ -31,21 +36,77 @@
       <div id="messages" class="col-12 all-messages"></div>
     </div>
 
+    <div class="data-table"></div>
+
+    <div>
+      <img id="photo" style="width: 500px" />
+    </div>
+
     <!-- Input and button send -->
-    <form class="row" id="form">
+    <form action="javascript: void(0);" class="row" id="form">
       <input
-        id="input"
+        id="sendMsg"
         placeholder="Message..."
         type="text"
-        class="form-control message-input col-7 col-sm-8 col-md-10"
+        class="form-control message-input col-7 col-sm-8 col-md-8"
+        autofocus
       />
+
       <button
+        id="send-button"
         type="submit"
         class="btn btn-primary submit-btn col-5 col-sm-4 col-md-2"
       >
         Enviar
       </button>
+
+      <div class="new-file fas fa-upload btn btn-primary col-md-2">
+        <input
+          class="adjustment-button"
+          type="file"
+          name="selectImg"
+          id="send-upload-photo"
+          onchange="uploadPhoto()"
+        />
+      </div>
     </form>
     <script src="buldle.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7b9f6b3a7e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      //https://www.youtube.com/watch?v=9vGFqFbU--c
+      function uploadPhoto() {
+        var newPhoto = document.querySelector('input[name=selectImg]').files[0];
+        var preview = document.querySelector('img');
+        console.log(newPhoto.name);
+
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+          preview.src = reader.result;
+        };
+
+        if (newPhoto) {
+          reader.readAsDataURL(newPhoto);
+        } else {
+          preview.src = '';
+        }
+      }
+      //https://www.youtube.com/watch?v=euUtDQcwsYk
+      // $(function () {
+      //   $('#send-upload-photo').change(function () {
+      //     // console.log($(this));
+      //     const file = $(this)[0].files[0];
+      //     console.log(file);
+      //     const fileReader = new FileReader();
+      //     fileReader.onloadend = function () {
+      //       $('#photo').attr('src', fileReader.result);
+      //     };
+      //     fileReader.readAsDataURL(file);
+      //   });
+      // });
+    </script>
   </body>
 </html>

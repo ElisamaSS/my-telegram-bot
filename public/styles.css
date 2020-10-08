@@ -4,6 +4,19 @@ html {
   background: #f4f4f4;
 }
 
+.new-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.adjustment-button {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
 .header {
   position: fixed;
   top: 0;
